@@ -36,6 +36,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-file-dropzone": "^2.0.1"
+		"svelte-parts": "^0.0.6"
 	}
 }
