@@ -3,6 +3,7 @@
 	import { XMLParser } from 'fast-xml-parser';
 
 	import DropFile from 'svelte-parts/DropFile.svelte';
+	import { processSaveFile } from '../../helpers/save-file-helpers';
 
 	// PROPS
 
@@ -25,7 +26,9 @@
 			reader.onerror = () => console.log('file reading has failed');
 			reader.onload = () => {
 				const parser = new XMLParser();
-				const result = parser.parse(reader.result as string);
+				const raw = parser.parse(reader.result as string);
+				console.log(raw);
+				const result = processSaveFile(raw);
 				console.log(result);
 			};
 			reader.readAsText(file);

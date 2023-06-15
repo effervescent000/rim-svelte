@@ -58,8 +58,14 @@ export interface IParamDef {
 	complete?: boolean;
 }
 
-export interface Pawn {
-	id: string;
+export interface Pawn extends MinimalThing {
+	ageTracker: { ageBiologicalTicks: number };
+	guest: { guestStatus: string; hostFaction: string };
+	gender?: string;
+	healthTracker: { hediffSet: { hediffs: { li?: Array<HediffParams> | HediffParams } } };
+	kindDef: string;
+	name: { first: string; last: string; nick?: string };
+	skills: { skills: { li: Array<SkillParams> } };
 	story: {
 		childhood: string;
 		adulthood?: string;
@@ -70,12 +76,6 @@ export interface Pawn {
 		hairColor: string;
 		melanin: string;
 	};
-	guest: { guestStatus: string };
-	name: { first: string; last: string; nick?: string };
-	gender?: string;
-	ageTracker: { ageBiologicalTicks: number };
-	healthTracker: { hediffSet: { hediffs: { li?: Array<HediffParams> | HediffParams } } };
-	skills: { skills: { li: Array<SkillParams> } };
 	workSettings: {
 		priorities: {
 			vals: {
@@ -129,4 +129,59 @@ export interface LifeStageParams {
 	nutritionMod?: number;
 	minAge: number;
 	key: string;
+}
+
+interface MinimalThing {
+	def: string;
+	id: string;
+	pos: string;
+}
+
+export interface RawSaveData {
+	savegame: {
+		game: {
+			maps: {
+				li: {
+					areaManager: {
+						areas: {
+							li: {
+								id: number;
+								innerGrid: {
+									trueCount: number;
+								};
+							}[];
+						};
+					};
+					things: {
+						thing: Pawn[];
+					};
+					zoneManager: {
+						allZones: {
+							li: {
+								id: number;
+								baseLabel: string;
+								cells: {
+									li: string[];
+								};
+								plantDefToGrow?: string;
+							}[];
+						};
+					};
+				};
+			};
+			world: {
+				factionManager: {
+					allFactions: {
+						li: Record<string, any>[];
+					};
+				};
+			};
+		};
+		meta: {
+			gameVersion: string;
+			modIds: {
+				li: string[];
+			};
+		};
+	};
 }
