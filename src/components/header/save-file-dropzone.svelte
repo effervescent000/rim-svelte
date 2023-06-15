@@ -36,9 +36,13 @@
 </script>
 
 <DropFile {onDrop}>
-	{#if processing}
-		<span>Processing...</span>
-	{:else}
-		<span>Drop file here</span>
-	{/if}
+	<div
+		class="p-2 rounded-md bg-off-white text-medium-purple w-32 border-light-purple border border-solid text-center"
+	>
+		{#if processing}
+			<span>Processing...</span>
+		{:else}
+			<span>Drop file here</span>
+		{/if}
+	</div>
 </DropFile>
