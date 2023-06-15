@@ -8,7 +8,8 @@ export default {
 			'dark-purple': '#2f2235',
 			'medium-purple': '#3f3244',
 			'light-purple': '#60495a',
-			'medium-gray': '#a9aca9'
+			'medium-gray': '#a9aca9',
+			'off-white': '#E2E8F0'
 		}
 	},
 	plugins: []
