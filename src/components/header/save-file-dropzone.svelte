@@ -1,14 +1,44 @@
 <script lang="ts">
+	// import { parseString } from 'xml2js';
+	import { XMLParser } from 'fast-xml-parser';
+
 	import DropFile from 'svelte-parts/DropFile.svelte';
 
 	// PROPS
 
 	// STATE
 
+	let processing = false;
+	let error = '';
+
 	// LOGIC
 	const onDrop = (files: File[]) => {
+		// if more than one file is dropped, reject
 		console.log(files);
+		if (files.length === 1) {
+			const file = files[0];
+
+			processing = true;
+
+			const reader = new FileReader();
+			reader.onabort = () => console.log('file reading was aborted');
+			reader.onerror = () => console.log('file reading has failed');
+			reader.onload = () => {
+				const parser = new XMLParser();
+				const result = parser.parse(reader.result as string);
+				console.log(result);
+			};
+			reader.readAsText(file);
+
+			processing = false;
+		}
 	};
 </script>
 
-<DropFile {onDrop}>Drop file here</DropFile>
+<DropFile {onDrop}>
+	{#if processing}
+		<span>Processing...</span>
+	{:else}
+		<span>Drop file here</span>
+	{/if}
+</DropFile>
