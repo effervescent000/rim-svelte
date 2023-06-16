@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { colonistStore } from '../../../stores';
-	import PawnCard from '../../pawn-cards/pawn-card.svelte';
+	import { colonistStore } from '../../stores';
+	import PawnCard from '../pawn-cards/pawn-card.svelte';
 
 	// PROPS
 
