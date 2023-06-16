@@ -1,7 +1,4 @@
-import { readable } from 'svelte/store';
+import { writable } from 'svelte/store';
 import type { Pawn } from './interfaces';
 
-export const pawnStore = (pawnList: Pawn[]) =>
-	readable([] as Pawn[], (set) => {
-		set(pawnList);
-	});
+export const pawnStore = () => writable([] as Pawn[]);
