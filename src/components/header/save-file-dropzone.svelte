@@ -43,14 +43,16 @@
 	};
 </script>
 
-<DropFile {onDrop}>
-	<div
-		class="p-2 rounded-md bg-off-white text-medium-purple w-32 border-light-purple border border-solid text-center"
-	>
-		{#if processing}
-			<span>Processing...</span>
-		{:else}
-			<span>Drop file here</span>
-		{/if}
-	</div>
-</DropFile>
+<div class="w-32">
+	<DropFile {onDrop}>
+		<div
+			class="p-2 rounded-md bg-off-white text-medium-purple border-light-purple border border-solid text-center"
+		>
+			{#if processing}
+				<span>Processing...</span>
+			{:else}
+				<span>Drop file here</span>
+			{/if}
+		</div>
+	</DropFile>
+</div>
