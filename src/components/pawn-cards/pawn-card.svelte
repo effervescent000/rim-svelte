@@ -11,4 +11,6 @@
 	const name = getName(pawn);
 </script>
 
-<div>{name}</div>
+<div class="w-[120px]">
+	<div class="text-center">{name}</div>
+</div>
