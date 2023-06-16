@@ -137,6 +137,15 @@ interface MinimalThing {
 	pos: string;
 }
 
+export interface Zone {
+	id: number;
+	baseLabel: string;
+	cells: {
+		li: string[];
+	};
+	plantDefToGrow?: string;
+}
+
 export interface RawSaveData {
 	savegame: {
 		game: {
@@ -157,14 +166,7 @@ export interface RawSaveData {
 					};
 					zoneManager: {
 						allZones: {
-							li: {
-								id: number;
-								baseLabel: string;
-								cells: {
-									li: string[];
-								};
-								plantDefToGrow?: string;
-							}[];
+							li: Zone[];
 						};
 					};
 				};
