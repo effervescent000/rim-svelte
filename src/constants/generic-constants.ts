@@ -14,3 +14,11 @@ export const LOW_PRIO = 4;
 
 export const GROWING_ZONE = 'Growing zone';
 export const AQUATIC_GROWING_ZONE = 'VanillaPlantsExpandedMorePlants.Zone_GrowingAquatic';
+
+export const NUTRITION_VALUE = 0.05;
+export const NUTRITION_REQUIRED_PER_DAY = 1.6;
+
+export const FILL_BAR = 'bar';
+
+export const HOUR = 2500;
+export const DAY = HOUR * 24;

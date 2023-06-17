@@ -124,7 +124,7 @@ export interface BackstoryLookupParams {
 	[key: string]: Array<LaborCategoryParams>;
 }
 
-export interface LifeStageParams {
+export interface LifeStage {
 	bodySize: number;
 	nutritionMod?: number;
 	minAge: number;
@@ -143,7 +143,7 @@ export interface Zone {
 	cells: {
 		li: string[];
 	};
-	plantDefToGrow?: string;
+	plantDefToGrow: string;
 }
 
 export interface RawSaveData {
@@ -186,4 +186,18 @@ export interface RawSaveData {
 			};
 		};
 	};
+}
+
+export interface Warning {
+	text?: string;
+	type?: string;
+	props: Record<string, number>;
+}
+
+export interface Plant {
+	key: string;
+	growDays: number;
+	harvestYield: number;
+	sowWork?: number;
+	harvestWork?: number;
 }
