@@ -1,8 +1,8 @@
+import type { Pawn, Warning, Zone } from '../interfaces';
+
 import { FILL_BAR, NUTRITION_VALUE } from '../constants/generic-constants';
 import { FOOD_PLANTS_ARRAY, GROW_DAY_DIVISOR, PLANTS } from '../constants/plant-constants';
 import { getNutritionRequired, roundToTwoDecimals } from '../helpers/utils';
-
-import type { Pawn, Warning, Zone } from '../interfaces';
 
 class WarningsBuilder {
 	readonly growingZones: Zone[];
