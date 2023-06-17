@@ -124,7 +124,7 @@ export interface BackstoryLookupParams {
 	[key: string]: Array<LaborCategoryParams>;
 }
 
-export interface LifeStageParams {
+export interface LifeStage {
 	bodySize: number;
 	nutritionMod?: number;
 	minAge: number;
@@ -135,6 +135,15 @@ interface MinimalThing {
 	def: string;
 	id: string;
 	pos: string;
+}
+
+export interface Zone {
+	id: number;
+	baseLabel: string;
+	cells: {
+		li: string[];
+	};
+	plantDefToGrow: string;
 }
 
 export interface RawSaveData {
@@ -157,14 +166,7 @@ export interface RawSaveData {
 					};
 					zoneManager: {
 						allZones: {
-							li: {
-								id: number;
-								baseLabel: string;
-								cells: {
-									li: string[];
-								};
-								plantDefToGrow?: string;
-							}[];
+							li: Zone[];
 						};
 					};
 				};
@@ -184,4 +186,18 @@ export interface RawSaveData {
 			};
 		};
 	};
+}
+
+export interface Warning {
+	text?: string;
+	type?: string;
+	props: Record<string, number>;
+}
+
+export interface Plant {
+	key: string;
+	growDays: number;
+	harvestYield: number;
+	sowWork?: number;
+	harvestWork?: number;
 }
