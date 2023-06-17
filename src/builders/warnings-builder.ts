@@ -39,7 +39,7 @@ class WarningsBuilder {
 			);
 		this.nutritionPerDay = {};
 		// this.pctNutritionFromGrowing = pctNutritionFromGrowing;
-		this.pctNutritionFromGrowing = 50;
+		this.pctNutritionFromGrowing = 0.5;
 		// this.growingSeason = growingSeason;
 		this.growingSeason = 30;
 		this.numPawns = [...colonists, ...slaves, ...prisoners].length;

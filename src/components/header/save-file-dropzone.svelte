@@ -4,7 +4,7 @@
 
 	import DropFile from 'svelte-parts/DropFile.svelte';
 	import { processSaveFile } from '../../helpers/save-file-helpers';
-	import { colonistStore, mapPawns, prisonerStore, slaveStore } from '../../stores';
+	import { colonistStore, growingZones, mapPawns, prisonerStore, slaveStore } from '../../stores';
 
 	// PROPS
 
@@ -35,6 +35,7 @@
 				prisonerStore.set(result.prisoners);
 				slaveStore.set(result.slaves);
 				mapPawns.set(result.mapPawns);
+				growingZones.set(result.growingZones);
 			};
 			reader.readAsText(file);
 

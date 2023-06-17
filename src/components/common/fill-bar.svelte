@@ -9,12 +9,11 @@
 	const BAR_WIDTH = 20;
 
 	// LOGIC
-	const max = Math.max(target, currentValue) * 1.25;
-	const fillLevel = Math.round((currentValue / max) * BAR_HEIGHT);
-	const targetLine = Math.round((target / max) * BAR_HEIGHT);
+	$: max = Math.max(target, currentValue) * 1.25;
+	$: fillLevel = Math.round((currentValue / max) * BAR_HEIGHT);
+	$: targetLine = Math.round((target / max) * BAR_HEIGHT);
 </script>
 
-<!-- style={{ width: `${BAR_WIDTH}px`, bottom: `${targetLine}px` }} -->
 <div class="flex gap-1 w-48">
 	<div
 		class={`relative bg-green-900 p-0.5 rounded-sm`}
