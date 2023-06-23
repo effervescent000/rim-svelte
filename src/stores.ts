@@ -10,6 +10,7 @@ export const colonistStore = pawnStore();
 export const prisonerStore = pawnStore();
 export const slaveStore = pawnStore();
 export const mapPawns = pawnStore();
+export const selectedPawns = pawnStore();
 
 // other save data stores
 export const modList = writable<string[]>([]);
