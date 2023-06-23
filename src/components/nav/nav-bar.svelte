@@ -9,8 +9,8 @@
 	// LOGIC
 	const routes = [
 		{ label: 'Pawn evaluation', route: '/eval' },
-		{ label: 'Settings', route: '/settings' },
-		{ label: 'Group maker', route: '/group' }
+		{ label: 'Group maker', route: '/group' },
+		{ label: 'Settings', route: '/settings' }
 	];
 </script>
 
