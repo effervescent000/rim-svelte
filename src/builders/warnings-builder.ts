@@ -18,13 +18,15 @@ class WarningsBuilder {
 		growingZones,
 		colonists,
 		slaves,
-		prisoners
+		prisoners,
+		config: { pctNutritionFromGrowing, growingSeason }
 	}: // config: { pctNutritionFromGrowing, growingSeason },
 	{
 		growingZones: Zone[];
 		colonists: Pawn[];
 		slaves: Pawn[];
 		prisoners: Pawn[];
+		config: Record<string, string>;
 	}) {
 		// this.growingZones = growingZones.filter(({ allowSow }) => allowSow !== 'False');
 		this.growingZones = growingZones;
@@ -38,10 +40,10 @@ class WarningsBuilder {
 				{} as { [plant: string]: number }
 			);
 		this.nutritionPerDay = {};
-		// this.pctNutritionFromGrowing = pctNutritionFromGrowing;
-		this.pctNutritionFromGrowing = 0.5;
-		// this.growingSeason = growingSeason;
-		this.growingSeason = 30;
+		this.pctNutritionFromGrowing = +pctNutritionFromGrowing;
+		// this.pctNutritionFromGrowing = 0.5;
+		this.growingSeason = +growingSeason;
+		// this.growingSeason = 30;
 		this.numPawns = [...colonists, ...slaves, ...prisoners].length;
 		this.baseNutritionRequired = () => {
 			const nutritionPerColonist = [...colonists, ...slaves, ...prisoners].map((pawn) =>

@@ -18,19 +18,6 @@ export const modList = writable<string[]>([]);
 export const growingZones = writable<Zone[]>([]);
 
 // general purpose stores
-export const warnings = derived(
-	[colonistStore, prisonerStore, slaveStore, growingZones],
-	([$colonistStore, $prisonerStore, $slaveStore, $growingZones]) => {
-		const wb = new WarningsBuilder({
-			growingZones: $growingZones,
-			colonists: $colonistStore,
-			prisoners: $prisonerStore,
-			slaves: $slaveStore
-		});
-		wb.calculateNutrition();
-		return wb.warnings;
-	}
-);
 
 const DEFAULT_CONFIG = {
 	growingSeason: 60,
@@ -54,3 +41,19 @@ config.subscribe((val) => {
 		localStorage.setItem('config', JSON.stringify(val));
 	}
 });
+
+export const warnings = derived(
+	[colonistStore, prisonerStore, slaveStore, growingZones, config],
+	([$colonistStore, $prisonerStore, $slaveStore, $growingZones, $config]) => {
+		const wb = new WarningsBuilder({
+			growingZones: $growingZones,
+			colonists: $colonistStore,
+			prisoners: $prisonerStore,
+			slaves: $slaveStore,
+			config: $config
+		});
+		wb.calculateNutrition();
+		console.log('Updating warning store');
+		return wb.warnings;
+	}
+);
