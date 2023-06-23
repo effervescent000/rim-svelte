@@ -1,4 +1,5 @@
 <script lang="ts">
+	import NavBar from '../nav/nav-bar.svelte';
 	import PawnHeader from './pawn-header.svelte';
 	import SaveFileDropzone from './save-file-dropzone.svelte';
 	import WarningsWrapper from './warnings-wrapper.svelte';
@@ -14,3 +15,4 @@
 	<PawnHeader />
 	<WarningsWrapper />
 </div>
+<NavBar />
