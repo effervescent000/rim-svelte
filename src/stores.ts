@@ -1,10 +1,10 @@
 import { writable, derived } from 'svelte/store';
+import { browser } from '$app/environment';
 
 import type { Zone } from './interfaces';
 
 import { pawnStore } from './store-helpers';
 import WarningsBuilder from './builders/warnings-builder';
-import { browser } from '$app/environment';
 
 // pawn stores
 export const colonistStore = pawnStore();
@@ -33,8 +33,7 @@ export const warnings = derived(
 );
 
 const DEFAULT_CONFIG = {
-	slaveryMode: false,
-	growingSeason: 30,
+	growingSeason: 60,
 	pctNutritionFromGrowing: 0.5
 };
 
@@ -49,4 +48,9 @@ const getConfig = () => {
 };
 
 export const config = writable<Record<string, any>>(getConfig());
-config.subscribe((val) => browser && localStorage.setItem('config', JSON.stringify(val)));
+config.subscribe((val) => {
+	// console.log(val);
+	if (browser) {
+		localStorage.setItem('config', JSON.stringify(val));
+	}
+});

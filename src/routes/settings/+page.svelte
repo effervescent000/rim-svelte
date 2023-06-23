@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import { get } from 'svelte/store';
+	import { config } from '../../stores';
+
 	// PROPS
 
 	// STATE
@@ -11,12 +15,12 @@
 	];
 </script>
 
-<form method="POST">
+<form method="POST" use:enhance>
 	<div class="flex gap-10">
 		{#each settingsList as setting}
 			<label class="grid grid-cols-2 gap-2">
 				<span>{setting.label}</span>
-				<input name={setting.key} autocomplete="off" />
+				<input name={setting.key} autocomplete="off" value={get(config)[setting.key]} />
 			</label>
 		{/each}
 	</div>
