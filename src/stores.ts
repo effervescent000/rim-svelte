@@ -4,6 +4,7 @@ import type { Zone } from './interfaces';
 
 import { pawnStore } from './store-helpers';
 import WarningsBuilder from './builders/warnings-builder';
+import { browser } from '$app/environment';
 
 // pawn stores
 export const colonistStore = pawnStore();
@@ -30,3 +31,22 @@ export const warnings = derived(
 		return wb.warnings;
 	}
 );
+
+const DEFAULT_CONFIG = {
+	slaveryMode: false,
+	growingSeason: 30,
+	pctNutritionFromGrowing: 0.5
+};
+
+const getConfig = () => {
+	if (browser) {
+		const rawConfig = localStorage.getItem('config');
+		if (rawConfig) {
+			return JSON.parse(rawConfig);
+		}
+	}
+	return DEFAULT_CONFIG;
+};
+
+export const config = writable<Record<string, any>>(getConfig());
+config.subscribe((val) => browser && localStorage.setItem('config', JSON.stringify(val)));
