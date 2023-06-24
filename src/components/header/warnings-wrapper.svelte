@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SvelteElement } from 'svelte/internal';
 
-	import { warnings } from '../../stores';
+	import { warningsStore } from '../../stores';
 
 	import { FILL_BAR } from '../../constants/generic-constants';
 
@@ -17,7 +17,7 @@
 	};
 </script>
 
-{#each $warnings as warning}
+{#each $warningsStore as warning}
 	{#if warning.type}
 		<svelte:component
 			this={componentMapping[warning.type]}

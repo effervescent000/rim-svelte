@@ -19,10 +19,6 @@ export interface SkillParams {
 	def: string;
 }
 
-export interface StringIndexedValues {
-	[key: string]: number;
-}
-
 export interface IPawnValues {
 	colonistValue: number;
 	slaveValue: number;
@@ -62,7 +58,10 @@ export interface Pawn extends MinimalThing {
 	ageTracker: { ageBiologicalTicks: number };
 	guest: { guestStatus: string; hostFaction: string };
 	gender?: string;
-	healthTracker: { hediffSet: { hediffs: { li?: Array<HediffParams> | HediffParams } } };
+	healthTracker: {
+		hediffSet: { hediffs: { li?: Array<HediffParams> | HediffParams } };
+		healthState?: string;
+	};
 	kindDef: string;
 	name: { first: string; last: string; nick?: string };
 	skills: { skills: { li: Array<SkillParams> } };
@@ -200,4 +199,22 @@ export interface Plant {
 	harvestYield: number;
 	sowWork?: number;
 	harvestWork?: number;
+}
+
+interface ValueParams {
+	value: number;
+	reasons: ValueReason[];
+}
+
+interface ValueReason {
+	reason: string;
+	value: number;
+}
+
+export interface PawnValues {
+	[key: string]: {
+		bleedingOut: boolean;
+		colonist: ValueParams;
+		slave: ValueParams;
+	};
 }
