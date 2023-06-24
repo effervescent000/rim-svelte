@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { get } from 'svelte/store';
 	import { config } from '../../stores';
+	import Button from '../../components/common/button.svelte';
 
 	// PROPS
 
@@ -24,5 +25,5 @@
 			</label>
 		{/each}
 	</div>
-	<button type="submit">Save</button>
+	<Button type="submit">Save</Button>
 </form>

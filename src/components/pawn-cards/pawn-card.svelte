@@ -4,6 +4,7 @@
 
 	// PROPS
 	export let pawn: Pawn;
+	export let callback: (() => void) | undefined = undefined;
 
 	// STATE
 
@@ -11,6 +12,6 @@
 	const name = getName(pawn);
 </script>
 
-<div class="w-[120px]">
+<div class="w-[120px]" on:click={callback} on:keypress={callback}>
 	<div class="text-center">{name}</div>
 </div>
