@@ -5,6 +5,7 @@ import type { Zone } from './interfaces';
 
 import { pawnStore } from './store-helpers';
 import WarningsBuilder from './builders/warnings-builder';
+import EvaluationBuilder from './builders/eval-builder';
 
 // pawn stores
 export const colonistStore = pawnStore();
@@ -42,7 +43,7 @@ config.subscribe((val) => {
 	}
 });
 
-export const warnings = derived(
+export const warningsStore = derived(
 	[colonistStore, prisonerStore, slaveStore, growingZones, config],
 	([$colonistStore, $prisonerStore, $slaveStore, $growingZones, $config]) => {
 		const wb = new WarningsBuilder({
@@ -55,5 +56,19 @@ export const warnings = derived(
 		wb.calculateNutrition();
 		console.log('Updating warning store');
 		return wb.warnings;
+	}
+);
+
+export const evalStore = derived(
+	[colonistStore, selectedPawns, config, modList, slaveStore],
+	([$colonistStore, $selectedPawns, $config, $modList, $slaveStore]) => {
+		const eb = new EvaluationBuilder({
+			targets: $selectedPawns,
+			modList: $modList,
+			playerPawns: [...$colonistStore, ...$slaveStore],
+			config: $config
+		});
+		eb.fullEval();
+		return { values: eb.values };
 	}
 );
