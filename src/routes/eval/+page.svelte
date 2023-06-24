@@ -10,6 +10,8 @@
 	// LOGIC
 </script>
 
-{#each $selectedPawns as pawn}
-	<PawnCard {pawn} values={get(evalStore).values[pawn.id]} />
-{/each}
+<div class="flex gap-10">
+	{#each $selectedPawns as pawn}
+		<PawnCard {pawn} values={get(evalStore).values[pawn.id]} />
+	{/each}
+</div>
