@@ -16,7 +16,11 @@
 </script>
 
 <div class="relative">
-	<div class={`absolute ${!isHovered && 'invisible'} z-10`}>
+	<div
+		class={`absolute ${
+			!isHovered && 'invisible'
+		} z-10 translate-y-2/3 bg-dark-purple text-off-white w-max rounded-md p-2`}
+	>
 		<slot name="tooltip" />
 	</div>
 
