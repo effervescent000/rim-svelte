@@ -34,7 +34,7 @@
 	const tiles = makeTiles();
 </script>
 
-<div class="flex">
+<div class="flex justify-between">
 	{#each tiles as tile}
 		<Tile {...tile} />
 	{/each}

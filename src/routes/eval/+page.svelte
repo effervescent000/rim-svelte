@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { get } from 'svelte/store';
 	import PawnCard from '../../components/pawn-cards/pawn-card.svelte';
-	import { selectedPawns } from '../../stores';
+	import { evalStore, selectedPawns } from '../../stores';
 
 	// PROPS
 
@@ -10,5 +11,5 @@
 </script>
 
 {#each $selectedPawns as pawn}
-	<PawnCard {pawn} />
+	<PawnCard {pawn} values={get(evalStore).values[pawn.id]} />
 {/each}
