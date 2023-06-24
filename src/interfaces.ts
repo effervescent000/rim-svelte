@@ -19,10 +19,6 @@ export interface SkillParams {
 	def: string;
 }
 
-export interface StringIndexedValues {
-	[key: string]: number;
-}
-
 export interface IPawnValues {
 	colonistValue: number;
 	slaveValue: number;
@@ -203,4 +199,22 @@ export interface Plant {
 	harvestYield: number;
 	sowWork?: number;
 	harvestWork?: number;
+}
+
+interface ValueParams {
+	value: number;
+	reasons: ValueReason[];
+}
+
+interface ValueReason {
+	reason: string;
+	value: number;
+}
+
+export interface PawnValues {
+	[key: string]: {
+		bleedingOut: boolean;
+		colonist: ValueParams;
+		slave: ValueParams;
+	};
 }

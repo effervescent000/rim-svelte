@@ -14,7 +14,13 @@ import {
 import { TRAITS } from '../constants/traits-constants';
 import { buildColonyStats, buildLabors, getIncapableLabors } from '../helpers/eval-helpers';
 import { roundToTwoDecimals } from '../helpers/utils';
-import type { LaborCategoryParams, LaborParams, Pawn, SkillParams } from '../interfaces';
+import type {
+	LaborCategoryParams,
+	LaborParams,
+	Pawn,
+	PawnValues,
+	SkillParams
+} from '../interfaces';
 
 const BASE_VALUE = 1;
 
@@ -38,24 +44,6 @@ const makeIncapableSkills = (laborCategories: LaborCategoryParams[]) => {
 	);
 	return reducedLabors;
 };
-
-interface ValueParams {
-	value: number;
-	reasons: Array<ValueReason>;
-}
-
-interface ValueReason {
-	reason: string;
-	value: number;
-}
-
-interface PawnValues {
-	[key: string]: {
-		bleedingOut: boolean;
-		colonist: ValueParams;
-		slave: ValueParams;
-	};
-}
 
 class EvaluationBuilder {
 	readonly targets: Array<Pawn>;
